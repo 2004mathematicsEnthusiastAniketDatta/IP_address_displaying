@@ -1,6 +1,13 @@
 # IP_address_displaying
 This program is for identification of IP address of a system
 This is aprogram to identify the neccessary packages and the method of finding IP adress
+Process:
+1. Create a socket to define network interface IPv4 using statement socket(AF_INET, SOCK_DGRAM, 0) and store it in the variable n.
+2. Define the IPv4 address type by assigning AF_INET to (ifr.ifr_addr.sa_family).
+3. Define the port name where network is attached using statement strncpy(ifr.ifr_name , array , IFNAMSIZ – 1), where array is initialized with string “etho”.
+4. Call the ioctl function to access the network interface information by passing the address.
+5. Close the variable n.
+6. Use this (inet_ntoa(( (struct sockaddr_in *)&ifr.ifr_addr )->sin_addr)) to extract the IP address and print the same as output.
    CODE: /*
 
      * C Program to Get IP Address
